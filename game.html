@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Number Guessing Game</title>
+
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			width: 50%;
+			max-width: 800px;
+			min-width: 480px;
+			margin: 0 auto;
+			background-color: #f1f1f1;
+		}
+
+		h1 {
+			text-align: center;
+			color: #333;
+		}
+
+		.container {
+			margin-top: 50px;
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+
+		.form {
+			margin-bottom: 20px;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 5px;
+			font-weight: bold;
+		}
+
+		.guessField {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			font-size: 16px;
+		}
+
+		.guessSubmit {
+			display: block;
+			width: 100%;
+			padding: 10px;
+			margin-top: 10px;
+			background-color: #4caf50;
+			border: none;
+			border-radius: 5px;
+			color: #fff;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+		.result {
+			margin-top: 20px;
+			text-align: center;
+			font-weight: bold;
+			color: #333;
+		}
+
+		.alert {
+			margin-top: 10px;
+			padding: 10px;
+			border-radius: 5px;
+			font-size: 16px;
+		}
+
+		.alert-success {
+			background-color: #d4edda;
+			color: #155724;
+			border: 1px solid #c3e6cb;
+		}
+
+		.alert-danger {
+			background-color: #f8d7da;
+			color: #721c24;
+			border: 1px solid #f5c6cb;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Guess The Number</h1>
+		<p>
+			We have selected a random number
+			between 1 - 10. See if you can
+			guess it.
+		</p>
+
+		<div class="form">
+			<label for="guessField">Enter a guess:</label>
+			<input type="text" id="guessField" class="guessField">
+			<input type="submit" value="Submit guess" class="guessSubmit" id="submitguess">
+		</div>
+
+		<div class="result">
+			<p id="resultText"></p>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		let y = Math.floor(Math.random() * 10 + 1);
+		let guess = 1;
+
+		document.getElementById("submitguess").onclick = function () {
+			let x = document.getElementById("guessField").value;
+			let resultText = document.getElementById("resultText");
+			let i;
+				let allnum = new Array();
+				allnum[i]=x;
+				i++;
+			
+			guess++;
+			
+			if(guess==5){
+				resultText.innerHTML = "OOPS GAME OVER !! YOU HAVE REACHED AT YOUR MAX GUESS ";
+				resultText.className = "alert alert-danger";
+				
+			}
+			else if (x == y) {
+				resultText.innerHTML = "CONGRATULATIONS!!! YOU GUESSED IT RIGHT IN " + guess + " GUESS";
+				resultText.className = "alert alert-success";
+				
+			} else if (x > y) {
+				//guess++;
+				resultText.innerHTML = "OOPS SORRY!! TRY A SMALLER NUMBER";
+				resultText.className = "alert alert-danger";
+			} else if(x < y) {
+				//guess++;
+				resultText.innerHTML = "OOPS SORRY!! TRY A GREATER NUMBER";
+				resultText.className = "alert alert-danger";
+			}
+			
+		}
+	
+	</script>
+</body>
+</html>
